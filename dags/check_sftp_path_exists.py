@@ -17,8 +17,8 @@ def check_sftp_directory():
 
 with DAG(
     dag_id="check_sftp_path_exists",
-    start_date=datetime(2024, 1, 1),
-    schedule="*/10 * * * *",  # 매시간 정각
+    start_date=datetime(2026, 3, 21),
+    schedule="*/5 * * * *",  # 매시간 정각
     catchup=False,
     tags=["sftp", "check"],
 ) as dag:
