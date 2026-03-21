@@ -20,6 +20,8 @@ with DAG(
     schedule="*/5 * * * *",  # 매시간 정각
     catchup=False,
     tags=["sftp", "check"],
+    max_active_runs=1,
+    max_active_tasks=5,  # task가 병렬로 최대 5
 ) as dag:
 
     check_task = PythonOperator(
