@@ -1,6 +1,6 @@
 from pathlib import Path
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-from dags.common.db.postgres_config import EMP_DB_CONN_ID
+from common.db.postgres_config import EMP_DB_CONN_ID
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 

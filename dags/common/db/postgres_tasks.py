@@ -1,5 +1,5 @@
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
-from dags.common.db.postgres_config import EMP_DB_CONN_ID
+from common.db.postgres_config import EMP_DB_CONN_ID
 
 
 def build_postgres_sql_task(

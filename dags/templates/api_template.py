@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.decorators import task
-from dags.common.dag_defaults import DEFAULT_ARGS, COMMON_TAGS
-from dags.common.callbacks import on_failure_callback
+from common.dag_defaults import DEFAULT_ARGS, COMMON_TAGS
+from common.callbacks import on_failure_callback
 
 
 def create_api_dag(

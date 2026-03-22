@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
-from dags.common.dag_defaults import DEFAULT_ARGS, COMMON_TAGS
+from common.dag_defaults import DEFAULT_ARGS, COMMON_TAGS
 
 
 def create_k8s_job_dag(

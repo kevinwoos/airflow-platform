@@ -1,4 +1,4 @@
-from dags.templates.api_template import create_api_dag
+from templates.api_template import create_api_dag
 
 dag = create_api_dag(
     dag_id="settlement_daily_api",

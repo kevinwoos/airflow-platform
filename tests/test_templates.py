@@ -1,4 +1,4 @@
-from dags.templates.sftp_template import create_sftp_dag
+from templates.sftp_template import create_sftp_dag
 
 
 def test_create_sftp_dag():

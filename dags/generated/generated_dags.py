@@ -1,6 +1,6 @@
 from pathlib import Path
 import yaml
-from dags.templates.sftp_template import create_sftp_dag
+from templates.sftp_template import create_sftp_dag
 
 CONFIG_DIR = Path("/opt/airflow/dags/configs/dev")
 

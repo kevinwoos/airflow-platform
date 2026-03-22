@@ -1,4 +1,4 @@
-from dags.templates.sftp_template import create_sftp_dag
+from templates.sftp_template import create_sftp_dag
 
 dag = create_sftp_dag(
     dag_id="sales_daily_sftp",
