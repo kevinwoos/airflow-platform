@@ -11,3 +11,19 @@
 - Dynamic DAG 설정 예시
 - 테스트 예시
 - Dockerfile 및 requirements 예시
+
+
+sample-app
+├── src
+│   ├── main.py
+│   └── utils.py
+├── common
+│   └── db
+│       ├── postgres_config.py
+│       ├── postgres_tasks.py
+│       └── postgres_helper.py
+├── db
+│   └── postgresql_template.py
+├── requirements.txt
+├── README.md
+└── .gitignore

@@ -126,6 +126,10 @@ images:
     tag: v4.4.2
     pullPolicy: IfNotPresent
 
+# UKD
+extraPipPackages:
+  - apache-airflow-providers-postgres
+
 # Select certain nodes for airflow pods.
 nodeSelector: {}
 affinity: {}
@@ -443,7 +447,16 @@ priorityClasses: []
 #    * key (templated) is the name of the secret that will be created
 #    * value: an object with the standard 'data' or 'stringData' key (or both).
 #          The value associated with those keys must be a string (templated)
-extraSecrets: {}
+# UKD
+extraSecrets:
+  airflow-demo-connections:
+    stringData: |
+      AIRFLOW_CONN_EMP_DB: postgresql://emp_app:emp_app123%21@airflow-postgresql:5432/empdb
+# UKD
+secret:
+  - envName: AIRFLOW_CONN_EMP_DB
+    secretName: airflow-demo-connections
+    secretKey: AIRFLOW_CONN_EMP_DB
 # eg:
 # extraSecrets:
 #   '{{ .Release.Name }}-airflow-connections':
@@ -3430,7 +3443,7 @@ dags:
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/kevinwoos/airflow-dags.git # https://github.com/apache/airflow.git
+    repo: https://github.com/kevinwoos/airflow-platform.git # https://github.com/apache/airflow.git
     branch: dev # v2-2-stable
     rev: HEAD
     # The git revision (branch, tag, or hash) to check out, v4 only
