@@ -1,11 +1,11 @@
-from airflow import DAG
 from datetime import datetime
-
+from airflow.sdk import DAG
 
 def build_demo_dag(
     dag_id: str,
     tags: list[str] | None = None,
     schedule=None,
+    template_searchpath: list[str] | None = None,
 ):
     return DAG(
         dag_id=dag_id,
@@ -13,4 +13,5 @@ def build_demo_dag(
         schedule=schedule,
         catchup=False,
         tags=["demo"] + (tags or []),
+        template_searchpath=template_searchpath or [],
     )
