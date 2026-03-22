@@ -1,6 +1,6 @@
 from airflow.decorators import task
 
-from common.dag.base_dag import build_demo_dag
+from common.base_dag import build_demo_dag
 from common.db.postgres_tasks import build_postgres_sql_task
 from common.db.postgres_helper import select_emp_rows, assert_rows_exist
 
