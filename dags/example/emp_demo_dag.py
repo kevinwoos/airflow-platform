@@ -13,17 +13,17 @@ with build_demo_dag(
 
     create_emp_table = build_postgres_sql_task(
         task_id="create_emp_table",
-        sql="templates/sql/emp_create.sql",
+        sql="../templates/sql/emp_create.sql",
     )
 
     insert_emp_rows = build_postgres_sql_task(
         task_id="insert_emp_rows",
-        sql="templates/sql/emp_insert.sql",
+        sql="../templates/sql/emp_insert.sql",
     )
 
     @task(task_id="select_emp_rows")
     def select_emp_rows_task():
-        rows = select_emp_rows("templates/sql/emp_select.sql")
+        rows = select_emp_rows("../templates/sql/emp_select.sql")
         rows = assert_rows_exist(rows)
 
         for row in rows:
