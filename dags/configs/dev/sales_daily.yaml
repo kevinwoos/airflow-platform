@@ -1,0 +1,7 @@
+dag_id: sales_hourly_sync
+schedule: "0 * * * *"
+source_path: /inbound/sales
+target_path: /archive/sales
+tags:
+  - sales
+  - sftp

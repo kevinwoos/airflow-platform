@@ -1,0 +1,7 @@
+dag_id: settlement_hourly_sync
+schedule: "30 * * * *"
+source_path: /inbound/settlement
+target_path: /archive/settlement
+tags:
+  - settlement
+  - sftp

@@ -1,0 +1,7 @@
+apache-airflow-providers-cncf-kubernetes
+apache-airflow-providers-sftp
+apache-airflow-providers-http
+pyyaml
+requests
+paramiko
+psycopg2-binary

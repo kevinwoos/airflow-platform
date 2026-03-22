@@ -1,0 +1,74 @@
+executor: CeleryExecutor
+
+airflowVersion: "2.10.5"
+
+defaultAirflowRepository: myacr.azurecr.io/airflow-custom
+defaultAirflowTag: "2.10.5-py311-v3"
+
+images:
+  airflow:
+    repository: myacr.azurecr.io/airflow-custom
+    tag: "2.10.5-py311-v3"
+    pullPolicy: IfNotPresent
+
+config:
+  AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+  AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "True"
+  AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
+  AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: "60"
+  AIRFLOW__LOGGING__REMOTE_LOGGING: "True"
+
+dags:
+  gitSync:
+    enabled: true
+    repo: "ssh://git@github.com/my-org/airflow-platform.git"
+    branch: "release"
+    rev: "HEAD"
+    depth: 1
+    subPath: "dags"
+    syncWait: 120
+    sshKeySecret: airflow-git-ssh-key
+
+extraEnv:
+  - name: PYTHONPATH
+    value: "/opt/airflow:/opt/airflow/common_lib"
+  - name: APP_ENV
+    value: "prd"
+  - name: TZ
+    value: "Asia/Seoul"
+
+webserver:
+  defaultUser:
+    enabled: false
+
+scheduler:
+  replicas: 2
+  resources:
+    requests:
+      cpu: "1"
+      memory: "2Gi"
+    limits:
+      cpu: "2"
+      memory: "4Gi"
+
+workers:
+  replicas: 4
+  resources:
+    requests:
+      cpu: "1"
+      memory: "2Gi"
+    limits:
+      cpu: "2"
+      memory: "4Gi"
+
+redis:
+  enabled: true
+
+postgresql:
+  enabled: false
+
+data:
+  metadataSecretName: airflow-metadata-db-secret
+
+flower:
+  enabled: false
